@@ -1,0 +1,40 @@
+---
+title: "Coursera Developing Data Products Week 3"
+author: "Frank Oelker"
+date: "21 6 2021"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(datasets)
+library(plotly)
+```
+
+## Task
+
+Create a web page presentation using R Markdown that features a plot created with Plotly. 
+
+I will use the mtcars dataset.
+
+## Slide with R code
+
+```{r plotly, echo = TRUE}
+myplot <- plot_ly(data = mtcars, x = ~hp, y = ~mpg, 
+                  color = as.factor(mtcars$cyl), type = "scatter", 
+                  mode = "markers")
+myplot <- myplot %>% 
+    layout(xaxis = list(title = "horsepower"),
+         yaxis = list(title = "miles per gallon"),
+         legend = list(title = list(text="Cylinders")),
+         legend = list(x = 0.2, y = 0.9))
+myplot <- myplot %>% 
+    layout(legend = list(orientation = "h",
+                       x = 0.4, y = -0.2))
+```
+
+## Slide with R Output
+
+```{r plot}
+myplot
+```
